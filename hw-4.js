@@ -9,11 +9,7 @@ console.log(splitAndMerge("Hello World!",","));
 
 //2 Convert a hash into an array. 
 let convert= (obj) => {
-    var array = [];
-    for (i in obj) {
-        array.push([i, obj[i]]);
-    }
-    return array;
+return Object.entries(obj);
 }
 console.log(convert({ name: 'Jeremy', age: 24, role: 'Software Engineer' }));
 
@@ -55,14 +51,13 @@ console.log(smallest(2, 0.1, -5, 100, 3)); // -5
 //7  function  that transform array of numbers to array of functions that will return value from a base array
 let transform=(array) => array.map((number) =>()=> number);
 
-var baseArray = [10, 20, 30, 40, 50];
-var newArr = transform(baseArray);
+const baseArray = [10, 20, 30, 40, 50];
+const newArr = transform(baseArray);
 console.log(newArr[3]());
 console.log(newArr[4]());
 
 //8 Function expects arbitrary number of digit arguments and returns compound value of them
-let sum=(...array)=>array.length === 0 ? 0 : array[0] + sum(...array.slice(1));
-//let sum = (...args) => args.length === 0 ? 0 :args.reduce((s, num) => s + num, 0);
+const sum=(...array)=>array.reduce((partial_sum, a) => partial_sum + a,0); 
 console.log(sum(1, 3, 5, 7));
 
 //9 Function expects number and logs values one by one till zero with one second delay
